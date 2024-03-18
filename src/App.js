@@ -14,7 +14,10 @@ import Premium from "./pages/Premium";
 import Registration from "./pages/Registration"
 import Contact from "./pages/Contact";
 import Ads from "./components/Ads";
-import Footer from "./components/Footer";
+import History from "./pages/History";
+import About from "./pages/About";
+import Contribute from "./pages/Contribute";
+
 
 
 
@@ -48,6 +51,12 @@ function App() {
         <Route path="/Registration" element={<Registration />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Ads" element={<Ads />} />
+        <Route path="/History" element={<History />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contribute" element={<Layout><Contribute /></Layout>} />
+
+
+
 
 
 
