@@ -8,25 +8,24 @@ import BackBtn from "../components/BackBtn";
 function Contribute() {
   return (
     <>
-    <BackBtn />
+      <BackBtn />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
         <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+          {/* <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
             Announcing our next round of funding.{" "}
             <a href="#" className="font-semibold text-indigo-600">
               <span className="absolute inset-0" aria-hidden="true" />
               Read more <span aria-hidden="true">&rarr;</span>
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Data to enrich your online business
+            Contribute to Vortex
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+            Vortex is built by a community of creators who want to share —
+            from amateurs to professionals and everyone in between.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
@@ -36,7 +35,7 @@ function Contribute() {
               Get started
             </a>
             <a
-              href="#"
+              href="/About"
               className="text-sm font-semibold leading-6 text-gray-900"
             >
               Learn more <span aria-hidden="true">→</span>
@@ -153,295 +152,295 @@ function Contribute() {
       {/* third section */}
 
       <div className="flex justify-between mt-48">
-      {/* Post Card 1 */}
-      <div className="ml-12 rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100 mt-24">
-        {/* Post Header */}
-        <div className="flex items-center justify-between p-3">
-          <div className="flex items-center space-x-2">
-            <img
-              src="https://source.unsplash.com/50x50/?portrait"
-              alt=""
-              className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
-            />
-            <div className="-space-y-1">
-              <h2 className="text-sm font-semibold leading-none">
-                leroy_jenkins72
-              </h2>
-              <span className="inline-block text-xs leading-none text-gray-400">
-                Somewhere
-              </span>
+        {/* Post Card 1 */}
+        <div className="ml-12 rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100 mt-24">
+          {/* Post Header */}
+          <div className="flex items-center justify-between p-3">
+            <div className="flex items-center space-x-2">
+              <img
+                src="https://source.unsplash.com/50x50/?portrait"
+                alt=""
+                className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
+              />
+              <div className="-space-y-1">
+                <h2 className="text-sm font-semibold leading-none">
+                  leroy_jenkins72
+                </h2>
+                <span className="inline-block text-xs leading-none text-gray-400">
+                  Somewhere
+                </span>
+              </div>
             </div>
-          </div>
-          <button title="Open options" type="button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              className="w-5 h-5 fill-current"
-            >
-              <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
-              <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
-              <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
-            </svg>
-          </button>
-        </div>
-        {/* Post Image */}
-        <img
-          src="https://source.unsplash.com/301x301/?random"
-          alt=""
-          className="object-cover object-center w-full h-72 bg-gray-500"
-        />
-        {/* Post Actions */}
-        <div className="p-3">
-          {/* Like, Comment, Share, Bookmark Buttons */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <button
-                type="button"
-                title="Like post"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Like SVG Code */}
-                </svg>
-              </button>
-              <button
-                type="button"
-                title="Add a comment"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Comment SVG Code */}
-                </svg>
-              </button>
-              <button
-                type="button"
-                title="Share post"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Share SVG Code */}
-                </svg>
-              </button>
-            </div>
-            <button
-              type="button"
-              title="Bookmark post"
-              className="flex items-center justify-center"
-            >
+            <button title="Open options" type="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
                 className="w-5 h-5 fill-current"
               >
-                {/* Bookmark SVG Code */}
+                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
+                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
+                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
               </svg>
             </button>
           </div>
-          {/* Liked By Section */}
-          <div className="flex flex-wrap items-center pt-3 pb-1">
-            <div className="flex items-center space-x-2">
-              <div className="flex -space-x-1">
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?1"
-                />
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?2"
-                />
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?3"
-                />
+          {/* Post Image */}
+          <img
+            src="https://source.unsplash.com/301x301/?random"
+            alt=""
+            className="object-cover object-center w-full h-72 bg-gray-500"
+          />
+          {/* Post Actions */}
+          <div className="p-3">
+            {/* Like, Comment, Share, Bookmark Buttons */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <button
+                  type="button"
+                  title="Like post"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Like SVG Code */}
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  title="Add a comment"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Comment SVG Code */}
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  title="Share post"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Share SVG Code */}
+                  </svg>
+                </button>
               </div>
-              <span className="text-sm">
-                Liked by <span className="font-semibold">Mamba UI</span> and{' '}
-                <span className="font-semibold">86 others</span>
-              </span>
+              <button
+                type="button"
+                title="Bookmark post"
+                className="flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className="w-5 h-5 fill-current"
+                >
+                  {/* Bookmark SVG Code */}
+                </svg>
+              </button>
+            </div>
+            {/* Liked By Section */}
+            <div className="flex flex-wrap items-center pt-3 pb-1">
+              <div className="flex items-center space-x-2">
+                <div className="flex -space-x-1">
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?1"
+                  />
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?2"
+                  />
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?3"
+                  />
+                </div>
+                <span className="text-sm">
+                  Liked by <span className="font-semibold">Mamba UI</span> and{" "}
+                  <span className="font-semibold">86 others</span>
+                </span>
+              </div>
+            </div>
+            {/* Comments Section */}
+            <div className="space-y-3">
+              <p className="text-sm">
+                <span className="text-base font-semibold">leroy_jenkins72</span>{" "}
+                Nemo ea quasi debitis impedit!
+              </p>
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                className="w-full py-0.5 bg-transparent border-none rounded text-sm pl-0 text-gray-100"
+              />
             </div>
           </div>
-          {/* Comments Section */}
-          <div className="space-y-3">
-            <p className="text-sm">
-              <span className="text-base font-semibold">leroy_jenkins72</span>{' '}
-              Nemo ea quasi debitis impedit!
+        </div>
+
+        {/* Your images, all over the internet */}
+        <div class="flex items-center justify-center flex-1">
+          <div class="ml-8">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-48">
+              Your images, all over the internet.
+            </h1>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Unsplash has become the internet’s source of visuals — powering
+              everything from Apple keynotes to high school Art projects. By
+              contributing your images, you are pushing more creativity forward
+              every day.
             </p>
-            <input
-              type="text"
-              placeholder="Add a comment..."
-              className="w-full py-0.5 bg-transparent border-none rounded text-sm pl-0 text-gray-100"
-            />
           </div>
         </div>
-      </div>
 
-      {/* Your images, all over the internet */}
-      <div class="flex items-center justify-center flex-1">
-        <div class="ml-8">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-48">
-            Your images, all over the internet.
-          </h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600">
-            Unsplash has become the internet’s source of visuals — powering
-            everything from Apple keynotes to high school Art projects. By
-            contributing your images, you are pushing more creativity forward
-            every day.
-          </p>
-        </div>
-      </div>
-
-      {/* Post Card 2 */}
-      <div className="ml-12 rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100 mt-24">
-        {/* Post Header */}
-        <div className="flex items-center justify-between p-3">
-          <div className="flex items-center space-x-2">
-            <img
-              src="https://source.unsplash.com/50x50/?portrait"
-              alt=""
-              className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
-            />
-            <div className="-space-y-1">
-              <h2 className="text-sm font-semibold leading-none">
-                leroy_jenkins72
-              </h2>
-              <span className="inline-block text-xs leading-none text-gray-400">
-                Somewhere
-              </span>
+        {/* Post Card 2 */}
+        <div className="ml-12 rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100 mt-24">
+          {/* Post Header */}
+          <div className="flex items-center justify-between p-3">
+            <div className="flex items-center space-x-2">
+              <img
+                src="https://source.unsplash.com/50x50/?portrait"
+                alt=""
+                className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
+              />
+              <div className="-space-y-1">
+                <h2 className="text-sm font-semibold leading-none">
+                  leroy_jenkins72
+                </h2>
+                <span className="inline-block text-xs leading-none text-gray-400">
+                  Somewhere
+                </span>
+              </div>
             </div>
-          </div>
-          <button title="Open options" type="button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              className="w-5 h-5 fill-current"
-            >
-              <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
-              <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
-              <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
-            </svg>
-          </button>
-        </div>
-        {/* Post Image */}
-        <img
-          src="https://source.unsplash.com/301x301/?random"
-          alt=""
-          className="object-cover object-center w-full h-72 bg-gray-500"
-        />
-        {/* Post Actions */}
-        <div className="p-3">
-          {/* Like, Comment, Share, Bookmark Buttons */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <button
-                type="button"
-                title="Like post"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Like SVG Code */}
-                </svg>
-              </button>
-              <button
-                type="button"
-                title="Add a comment"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Comment SVG Code */}
-                </svg>
-              </button>
-              <button
-                type="button"
-                title="Share post"
-                className="flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  {/* Share SVG Code */}
-                </svg>
-              </button>
-            </div>
-            <button
-              type="button"
-              title="Bookmark post"
-              className="flex items-center justify-center"
-            >
+            <button title="Open options" type="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
                 className="w-5 h-5 fill-current"
               >
-                {/* Bookmark SVG Code */}
+                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
+                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
+                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
               </svg>
             </button>
           </div>
-          {/* Liked By Section */}
-          <div className="flex flex-wrap items-center pt-3 pb-1">
-            <div className="flex items-center space-x-2">
-              <div className="flex -space-x-1">
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?1"
-                />
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?2"
-                />
-                <img
-                  alt=""
-                  className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?3"
-                />
+          {/* Post Image */}
+          <img
+            src="https://source.unsplash.com/301x301/?random"
+            alt=""
+            className="object-cover object-center w-full h-72 bg-gray-500"
+          />
+          {/* Post Actions */}
+          <div className="p-3">
+            {/* Like, Comment, Share, Bookmark Buttons */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <button
+                  type="button"
+                  title="Like post"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Like SVG Code */}
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  title="Add a comment"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Comment SVG Code */}
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  title="Share post"
+                  className="flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current"
+                  >
+                    {/* Share SVG Code */}
+                  </svg>
+                </button>
               </div>
-              <span className="text-sm">
-                Liked by <span className="font-semibold">Mamba UI</span> and{' '}
-                <span className="font-semibold">86 others</span>
-              </span>
+              <button
+                type="button"
+                title="Bookmark post"
+                className="flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className="w-5 h-5 fill-current"
+                >
+                  {/* Bookmark SVG Code */}
+                </svg>
+              </button>
             </div>
-          </div>
-          {/* Comments Section */}
-          <div className="space-y-3">
-            <p className="text-sm">
-              <span className="text-base font-semibold">leroy_jenkins72</span>{' '}
-              Nemo ea quasi debitis impedit!
-            </p>
-            <input
-              type="text"
-              placeholder="Add a comment..."
-              className="w-full py-0.5 bg-transparent border-none rounded text-sm pl-0 text-gray-100"
-            />
+            {/* Liked By Section */}
+            <div className="flex flex-wrap items-center pt-3 pb-1">
+              <div className="flex items-center space-x-2">
+                <div className="flex -space-x-1">
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?1"
+                  />
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?2"
+                  />
+                  <img
+                    alt=""
+                    className="w-5 h-5 border rounded-full bg-gray-500 border-gray-800"
+                    src="https://source.unsplash.com/40x40/?portrait?3"
+                  />
+                </div>
+                <span className="text-sm">
+                  Liked by <span className="font-semibold">Mamba UI</span> and{" "}
+                  <span className="font-semibold">86 others</span>
+                </span>
+              </div>
+            </div>
+            {/* Comments Section */}
+            <div className="space-y-3">
+              <p className="text-sm">
+                <span className="text-base font-semibold">leroy_jenkins72</span>{" "}
+                Nemo ea quasi debitis impedit!
+              </p>
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                className="w-full py-0.5 bg-transparent border-none rounded text-sm pl-0 text-gray-100"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
       {/* fourth section */}
 

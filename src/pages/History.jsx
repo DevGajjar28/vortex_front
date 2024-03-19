@@ -3,12 +3,12 @@ import Footer from "../components/Footer";
 
 function History() {
   const links = [
-    { name: "Open roles", href: "#" },
-    { name: "Internship program", href: "#" },
-    { name: "Our values", href: "#" },
-    { name: "Meet our leadership", href: "#" },
+    // { name: "Open roles", href: "#" },
+    // { name: "Internship program", href: "#" },
+    // { name: "Our values", href: "#" },
+    // { name: "Meet our leadership", href: "#" },
   ];
-  const stats = [
+  const stats = [ // Define an array for statistics
     { name: "Documentation Duration-Months", value: "4" },
     { name: "Development Duration-Months", value: "9" },
     { name: "Team members", value: "3" },
@@ -16,6 +16,8 @@ function History() {
   ];
 
   const posts = [
+    // Define an array for posts
+    // post 1
     {
       id: 1,
       title: "Persistence and Precision",
@@ -27,12 +29,14 @@ function History() {
       category: { title: "", href: "#" },
       author: {
         name: "DEV GAJJAR",
-        role: "Co-Founder / CTO",
+        // role: "Co-Founder / CTO",
         href: "#",
         imageUrl:
           "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     },
+
+    // post 2
     {
       id: 1,
       title: "Strength of Collaboration",
@@ -44,12 +48,14 @@ function History() {
       category: { title: "", href: "#" },
       author: {
         name: "MIHIR SOLANKI",
-        role: "Co-Founder / CTO",
+        // role: "Co-Founder / CTO",
         href: "#",
         imageUrl:
           "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     },
+
+    //post 3
     {
       id: 1,
       title: "Conceptualization to Execution",
@@ -61,7 +67,7 @@ function History() {
       category: { title: "", href: "#" },
       author: {
         name: "JEET SHAH",
-        role: "Co-Founder / CTO",
+        // role: "Co-Founder / CTO",
         href: "#",
         imageUrl:
           "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -70,7 +76,7 @@ function History() {
   ];
   return (
     <>
-      {/* header section of history pagec- hyper ui */}
+      {/* header section of history page hyper */}
 
       <header className="bg-gray-50">
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -86,33 +92,35 @@ function History() {
             </div>
 
             <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-              <button
-                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
-                type="button"
-              >
-                <span className="text-sm font-medium"> View Website </span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
+              <a href="/">
+                <button
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
+                  type="button"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </button>
+                  <span className="text-sm font-medium"> View Website </span>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </button>
+              </a>
             </div>
           </div>
         </div>
       </header>
 
-      {/* ///middle section ::: from moamba ui  */}
+      {/* ///middle section mamba */}
       <section className="dark:bg-gray-800 dark:text-gray-100">
         <div className="container px-6 py-12 mx-auto">
           <div className="grid items-center gap-4 xl:grid-cols-5">
@@ -144,9 +152,6 @@ function History() {
                       />
                       <div>
                         <p className="text-lg font-semibold">Founding Vision</p>
-                        <p className="text-sm dark:text-gray-400">
-                          CTO of Company Co.
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -172,9 +177,6 @@ function History() {
                         <p className="text-lg font-semibold">
                           Community Growth and Engagement
                         </p>
-                        <p className="text-sm dark:text-gray-400">
-                          CTO of Company Co.
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -182,12 +184,12 @@ function History() {
                 <div className="grid content-center gap-4">
                   <div className="p-6 rounded shadow-md dark:bg-gray-900">
                     <p>
-                      Putant omnium elaboraret per ut. Id dicta tritani nominavi
-                      quo, mea id justo errem elaboraret. Agam mollis scripserit
-                      ea his, ut nec postea verear persecuti. Ea noster senserit
-                      eam, ferri omittantur ei nec. Id mel solet libris
-                      efficiantur, commune explicari et eos. Case movet ad est,
-                      sed tota vocent appetere ea.
+                      At Vortex, our journey of evolution didn't stop with just
+                      creating a platform; we embarked on a continuous quest to
+                      refine the art of content curation.From fine-tuning
+                      recommendation engines to enhancing user experience, our
+                      commitment to innovation in content curation remains
+                      unwavering.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img
@@ -196,23 +198,18 @@ function History() {
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm dark:text-gray-400">
-                          CTO of Company Co.
+                        <p className="text-lg font-semibold">
+                          Content Curation Evolution
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="p-6 rounded shadow-md dark:bg-gray-900">
                     <p>
-                      Te omnes virtute volutpat sed. Ei esse eros interesset
-                      vel, ei populo denique ocurreret vix, eu cum pertinax
-                      mandamus vituperatoribus. Solum nihil luptatum per ex, ei
-                      amet viderer eos. Ea illum labitur mnesarchum pro. Eius
-                      meis salutandi ei nam, alterum expetenda et nec. Expetenda
-                      intellegat at eum, per mazim sanctus honestatis ad. Ei
-                      noluisse invenire vix. Te ancillae patrioque qui, probo
-                      bonorum vivendum ex vim.
+                      Our journey of evolution also led us to reimagine user
+                      engagement. We explored innovative ways to foster
+                      meaningful interactions, facilitate discussions, and
+                      empower users to discover and share content seamlessly.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img
@@ -221,9 +218,8 @@ function History() {
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm dark:text-gray-400">
-                          CTO of Company Co.
+                        <p className="text-lg font-semibold">
+                          User Engagement Innovation
                         </p>
                       </div>
                     </div>
@@ -273,9 +269,9 @@ function History() {
               Phase of Early Development and Launch
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+              The early days were characterized by boundless creativity,
+              relentless experimentation, and a willingness to challenge the
+              status quo.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
@@ -354,16 +350,19 @@ function History() {
                 </div>
                 <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-400">
                   <h3 className="text-xl font-semibold tracking-wide">
-                    Team members
+                    Sustainable Growth and Impact
                   </h3>
-                  <time className="text-xs tracking-wide uppercase text-gray-400">
-                    Jan 2016
-                  </time>
+          
                   <p className="mt-3">
-                    Suspendisse tincidunt, arcu nec faucibus efficitur, justo
-                    velit consectetur nisl, sit amet condimentum lacus orci nec
-                    purus. Mauris quis quam suscipit, vehicula felis id,
-                    vehicula enim.
+                    As Vortex expands its presence and influence in the digital
+                    landscape, it remains committed to sustainability and
+                    responsible growth. With a focus on environmental
+                    stewardship, social responsibility, and ethical practices,
+                    Vortex seeks to minimize its ecological footprint and
+                    maximize its positive impact on society and the planet. By
+                    prioritizing sustainability and ethical business practices,
+                    Vortex aims to create a more equitable, inclusive, and
+                    sustainable future for all.
                   </p>
                 </div>
               </div>
@@ -378,10 +377,10 @@ function History() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Insightful Journeys
+              Insightful Journeys
             </h2>
             <p className="mt-2 text-lg leading-8 text-gray-600">
-            Exploring Paths to Success
+              Exploring Paths to Success
             </p>
           </div>
           <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -408,7 +407,7 @@ function History() {
                       {post.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                  <p className="mt-5  text-sm leading-6 text-gray-600">
                     {post.description}
                   </p>
                 </div>
@@ -434,7 +433,7 @@ function History() {
         </div>
       </div>
 
-      <Footer />cd
+      <Footer />
     </>
   );
 }

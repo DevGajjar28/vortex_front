@@ -1,23 +1,36 @@
 import React from "react";
 import Contact from "./Contact";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function About() {
   return (
     <>
+      <Navbar />
       {/* Header section of page  */}
 
       <div className="relative overflow-hidden bg-white">
+      {/*  Container for the hero section  */}
         <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+          {/* Container for content within the hero section */}
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+           {/* Container for text content */}
             <div className="sm:max-w-lg">
+            {/* Main headline  */}
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Summer styles are finally here
+                Welcome to Vortex
               </h1>
+              
+              {/* Subheadline */}
               <p className="mt-4 text-xl text-gray-500">
-                This year, our new summer collection will shelter you from the
-                harsh elements of a world that doesn't care if you live or die.
+                At Vortex, we're passionate about bringing you the
+                latest and most relevant content from across the web. Our
+                platform is designed to help you discover, organize, and stay
+                updated on the topics that matter most to you.
               </p>
             </div>
+
+            {/* Container for image grid */}
             <div>
               <div className="mt-10">
                 {/* Decorative image grid */}
@@ -25,9 +38,13 @@ function About() {
                   aria-hidden="true"
                   className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
                 >
+                  {/* Absolute positioning for the image grid */}
                   <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                   {/* Flex container for the image grid */}
                     <div className="flex items-center space-x-6 lg:space-x-8">
+                     {/* First column of images */}
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        {/* Image 1 */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
@@ -35,6 +52,7 @@ function About() {
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
+                        {/* Image 2  */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
@@ -43,7 +61,10 @@ function About() {
                           />
                         </div>
                       </div>
+
+                      {/* second column of images */}
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                      {/* Image 3 */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
@@ -51,6 +72,7 @@ function About() {
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
+                        {/* Image 4  */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
@@ -58,6 +80,8 @@ function About() {
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
+
+                        {/* Image 5 */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
@@ -66,7 +90,11 @@ function About() {
                           />
                         </div>
                       </div>
+
+                      {/* Third column of images */}
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        
+                        {/* Image 6  */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
@@ -74,6 +102,7 @@ function About() {
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
+                        {/* Image 7  */}
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
@@ -87,10 +116,10 @@ function About() {
                 </div>
 
                 <a
-                  href="#"
+                  href="/Registration"
                   className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
                 >
-                  Shop Collection
+                  Sign-up now
                 </a>
               </div>
             </div>
@@ -131,7 +160,7 @@ function About() {
       </div>
 
       {/*  */}
-      <div className="dark:bg-gray-800 dark:text-gray-100 mt-20 relative">
+      <div className="dark:bg-gray-800 dark:text-gray-100 mt-20 relative ">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900 absolute top-0 right-0">
           <div className="flex items-center justify-between"></div>
           <div className="mt-3">
@@ -165,17 +194,22 @@ function About() {
       {/* third section of feature  */}
 
       <div className="dark:bg-gray-800 dark:text-gray-100 mt-96">
+        {/* Container for the feature section */}
         <div className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          {/* Title and description */}
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold sm:text-4xl">
-              All the features you want
+              Explore Exciting Features
             </h2>
             <p className="mt-4 text-lg dark:text-gray-400">
-              Pellentesque viverra, leo id euismod laoreet, nunc risus molestie
-              orci, vel faucibus quam justo id mauris.
+              Unleash the power of our platform with a plethora of features
+              designed to enhance your experience:
             </p>
           </div>
+
+          {/* List of features */}
           <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">
+            {/* Each feature item */}
             <div className="flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -193,136 +227,16 @@ function About() {
                 ></path>
               </svg>
               <div className="ml-3">
-                <dt className="text-lg font-medium">Quisque at urna</dt>
+                {/* Title and description */}
+                <dt className="text-lg font-medium">Curated Content</dt>
                 <dd className="mt-2 dark:text-gray-400">
-                  Vivamus ultricies bibendum tortor, molestie imperdiet justo
-                  cursus eu. Donec quis arcu magna. Integer tempor egestas
-                  dolor.
+                  Dive into a world of curated content tailored to your
+                  interests, from photography to artwork and everything in
+                  between.
                 </dd>
               </div>
             </div>
-            <div className="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              <div className="ml-3">
-                <dt className="text-lg font-medium">Quisque eu dui lacinia</dt>
-                <dd className="mt-2 dark:text-gray-400">
-                  Quisque ultricies volutpat sapien nec varius. Sed sit amet
-                  justo vestibulum, efficitur risus quis, gravida libero.
-                </dd>
-              </div>
-            </div>
-            <div className="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              <div className="ml-3">
-                <dt className="text-lg font-medium">Mauris dignissim</dt>
-                <dd className="mt-2 dark:text-gray-400">
-                  Phasellus nec molestie arcu. Proin dictum, lorem mollis rutrum
-                  efficitur, lectus velit pharetra elit, et dictum purus nibh
-                  auctor velit.
-                </dd>
-              </div>
-            </div>
-            <div className="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              <div className="ml-3">
-                <dt className="text-lg font-medium">Proin nulla eros</dt>
-                <dd className="mt-2 dark:text-gray-400">
-                  Sed ornare ultricies gravida. Morbi egestas dolor turpis,
-                  ornare laoreet est vehicula non.
-                </dd>
-              </div>
-            </div>
-            <div className="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              <div className="ml-3">
-                <dt className="text-lg font-medium">Proin dictum</dt>
-                <dd className="mt-2 dark:text-gray-400">
-                  Lorem mollis rutrum efficitur, lectus velit pharetra elit, et
-                  dictum purus nibh auctor velit.
-                </dd>
-              </div>
-            </div>
-            <div className="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              <div className="ml-3">
-                <dt className="text-lg font-medium">Quisque eu dui lacinia</dt>
-                <dd className="mt-2 dark:text-gray-400">
-                  Cras a mauris tincidunt, scelerisque justo sit amet, hendrerit
-                  est. Fusce venenatis diam fringilla metus convallis, at
-                  dapibus enim congue.
-                </dd>
-              </div>
-            </div>
+            {/* Each feature item */}
             <div className="flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -341,12 +255,12 @@ function About() {
               </svg>
               <div className="ml-3">
                 <dt className="text-lg font-medium">
-                  Cras vel bibendum tellus
+                  Personalized Recommendations
                 </dt>
                 <dd className="mt-2 dark:text-gray-400">
-                  Curabitur molestie neque ac massa pulvinar, nec sollicitudin
-                  nunc consequat. Donec mattis orci eros, vitae porttitor risus
-                  pretium eget.
+                  Our intelligent recommendation system learns from your
+                  preferences to deliver personalized content suggestions that
+                  resonate with you.
                 </dd>
               </div>
             </div>
@@ -367,10 +281,136 @@ function About() {
                 ></path>
               </svg>
               <div className="ml-3">
-                <dt className="text-lg font-medium">Dignissim magna</dt>
+                <dt className="text-lg font-medium">Advanced Search Filters</dt>
                 <dd className="mt-2 dark:text-gray-400">
-                  Cras ac lectus erat. Curabitur condimentum luctus nisi, non
-                  lacinia ipsum.
+                  Easily discover the content you love with our advanced search
+                  filters, allowing you to refine your search based on category,
+                  Keywords.
+                </dd>
+              </div>
+            </div>
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <div className="ml-3">
+                <dt className="text-lg font-medium">Seamless Collaboration</dt>
+                <dd className="mt-2 dark:text-gray-400">
+                  Collaborate effortlessly with fellow users, share your
+                  favorite content, and engage in meaningful discussions to
+                  foster a vibrant community.
+                </dd>
+              </div>
+            </div>
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <div className="ml-3">
+                <dt className="text-lg font-medium">User-Friendly Interface</dt>
+                <dd className="mt-2 dark:text-gray-400">
+                  Navigate our platform with ease thanks to our intuitive user
+                  interface, designed to provide a seamless browsing experience
+                  on any device.
+                </dd>
+              </div>
+            </div>
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <div className="ml-3">
+                <dt className="text-lg font-medium">Enhanced Accessibility</dt>
+                <dd className="mt-2 dark:text-gray-400">
+                  Accessibility is paramount to us. Our platform is built with
+                  accessibility features in mind, ensuring that everyone can
+                  enjoy our content regardless of their abilities.
+                </dd>
+              </div>
+            </div>
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <div className="ml-3">
+                <dt className="text-lg font-medium">Robust Security</dt>
+                <dd className="mt-2 dark:text-gray-400">
+                  Rest assured knowing that your data is safe with us. We employ
+                  robust security measures to protect your privacy and maintain
+                  the integrity of our platform.
+                </dd>
+              </div>
+            </div>
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 dark:text-violet-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <div className="ml-3">
+                <dt className="text-lg font-medium">Continuous Innovation</dt>
+                <dd className="mt-2 dark:text-gray-400">
+                  We're constantly evolving to bring you the latest features and
+                  enhancements. Stay tuned for exciting updates as we continue
+                  to innovate and improve our platform.
                 </dd>
               </div>
             </div>
@@ -637,44 +677,43 @@ function About() {
             Have you join with us ?
           </h2>
           <p className="flex-1 text-gray-400">
-            Join our community today and discover the endless
-            possibilities that await you. Whether you're looking to showcase
-            your work, connect with fellow enthusiasts, or simply explore the
-            world through a different lens, we're here to help you make your
-            vision a reality.
+            Join our community today and discover the endless possibilities that
+            await you. Whether you're looking to showcase your work, connect
+            with fellow enthusiasts, or simply explore the world through a
+            different lens, we're here to help you make your vision a reality.
           </p>
           <div className="flex flex-col justify-end gap-3 mt-6 sm:flex-row">
-          <a
+            <a
               rel="noopener noreferrer"
               href="/Registration"
               className="hover:underline dark:text-violet-400"
             >
-            <button className="px-6 py-2 rounded-sm" fdprocessedid="ig7gb1">
-                
-              No
-            </button>
+              <button className="px-6 py-2 rounded-sm" fdprocessedid="ig7gb1">
+                No
+              </button>
             </a>
             <a
               rel="noopener noreferrer"
               href="/"
               className="hover:underline dark:text-violet-400"
             >
-            <button
-              className="px-6 py-2 rounded-sm shadow-sm bg-violet-400 text-gray-900"
-              fdprocessedid="3dii8b"
-            >
-              Yes
-            </button></a>
+              <button
+                className="px-6 py-2 rounded-sm shadow-sm bg-violet-400 text-gray-900"
+                fdprocessedid="3dii8b"
+              >
+                Yes
+              </button>
+            </a>
           </div>
         </div>
       </div>
 
-
       {/*  */}
       <div className="mt-48">
-      
-     <Contact/ >
-     </div>
+        <Contact />
+      </div>
+
+      <Footer />
     </>
   );
 }
