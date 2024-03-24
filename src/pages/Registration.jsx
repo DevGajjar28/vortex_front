@@ -1,7 +1,52 @@
-import React from "react";
+import React,{useState} from "react";
+import * as Yup from "yup";
+
+
 
 function Registration() {
+  const [errors, setErrors] = useState({});
+  
+
+  const schema = Yup.object().shape({
+    first_name: Yup.string().required("First name is required"),
+    last_name: Yup.string().required("Last name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().required("Password is required").min(8, "Password must be at least 8 characters"),
+    password_confirmation: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Password confirmation is required"),
+    // marketing_accept: Yup.boolean().oneOf([true], "You must accept marketing terms"),
+  
+  })
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    const formData = {
+      first_name: e.target.first_name.value,
+      last_name: e.target.last_name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      password_confirmation: e.target.password_confirmation.value,
+      // marketing_accept: e.target.marketing_accept.value
+    };
+  
+    schema
+      .validate(formData, { abortEarly: false }) // Allow Yup to collect all errors
+      .then(() => {
+        // The form data is valid, do something with it
+        console.log("Form data is valid:", formData);
+      })
+      .catch((error) => {
+        // There are errors in the form data
+        const newErrors = {};
+        error.inner.forEach((err) => {
+          newErrors[err.path] = err.message;
+        });
+        setErrors(newErrors);
+      });
+      
+  };
   return (
+    
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
@@ -71,7 +116,7 @@ function Registration() {
               </p>
             </div>
 
-            <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+            <form action="#" className="mt-8 grid grid-cols-6 gap-6" onSubmit={handleSubmit}>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="FirstName"
@@ -86,6 +131,9 @@ function Registration() {
                   name="first_name"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
                 />
+                {errors.first_name && <p className="text-red-500 text-sm">{errors.first_name}</p>}
+
+
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -102,6 +150,8 @@ function Registration() {
                   name="last_name"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
                 />
+                {errors.last_name && <p className="text-red-500 text-sm">{errors.last_name}</p>}
+
               </div>
 
               <div className="col-span-6">
@@ -119,6 +169,8 @@ function Registration() {
                   name="email"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
                 />
+                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -136,6 +188,8 @@ function Registration() {
                   name="password"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
                 />
+                {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -152,6 +206,8 @@ function Registration() {
                   name="password_confirmation"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
                 />
+                {errors.password_confirmation && <p className="text-red-500 text-sm">{errors.password_confirmation}</p>}
+
               </div>
 
               <div className="col-span-6">

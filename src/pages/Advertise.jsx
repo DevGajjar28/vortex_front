@@ -1,8 +1,11 @@
 import Footer from "../components/Footer";
+import Toggle from "../components/Toggle";
 
 export default function Advertise() {
   return (
     <>
+
+    <Toggle />
       {/* Main section for advertisement */}
       <div className="bg-white">
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">

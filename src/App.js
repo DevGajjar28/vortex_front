@@ -17,6 +17,9 @@ import Ads from "./components/Ads";
 import History from "./pages/History";
 import About from "./pages/About";
 import Contribute from "./pages/Contribute";
+import ThemeContext from "./components/ThemeContext";
+import Collection from "./pages/Collection";
+import CollectionDetail from "./components/CollectionDetail";
 
 
 
@@ -40,7 +43,7 @@ function App() {
   return (
     <>
 
-
+{/* <ThemeContext /> */}
       <Routes>
 
         <Route path="/" element={<Layout><Home /></Layout>} />
@@ -54,7 +57,10 @@ function App() {
         <Route path="/History" element={<History />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contribute" element={<Layout><Contribute /></Layout>} />
+        <Route path="/Collection" element={<Layout><Collection /></Layout>} />
+        <Route path="/Collection/:collectionId" element={<CollectionDetail/>} />
 
+       
 
 
 

@@ -13,10 +13,10 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 
 const products = [
   { name: 'Become-One', description: 'Get a better understanding of your traffic', href: '/Contribute', icon: ChartPieIcon },
-  { name: 'Collection', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Collection', description: 'Speak directly to your customers', href: '/Collection', icon: CursorArrowRaysIcon },
   { name: 'History', description: 'Your customers’ data will be safe and secure', href: '/History', icon: FingerPrintIcon },
   { name: 'About us', description: 'Connect with third-party tools', href: '/About', icon: SquaresPlusIcon },
-  { name: 'Need Help', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  // { name: 'Need Help', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },

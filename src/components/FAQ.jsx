@@ -9,10 +9,10 @@ function FAQ() {
       </h2>
 
       {/* FAQ Items */}
-      <div className="space-y-4 mt-28">
+      <div className="space-y-4 mt-28 border-4 border-black rounded-lg p-4 md:p-8">
         {/* FAQ Item 1 */}
         <details
-          className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
+          className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
           open
         >
           {/* FAQ Item 1 Summary */}
@@ -47,7 +47,7 @@ function FAQ() {
         </details>
 
         {/* FAQ Item 2 */}
-        <details className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+        <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
           {/* FAQ Item 2 Summary */}
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
             <h2 className="text-lg font-medium text-gray-900">
@@ -79,7 +79,7 @@ function FAQ() {
         </details>
 
         {/* FAQ Item 3 */}
-        <details className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+        <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
           {/* FAQ Item 3 Summary */}
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
             <h2 className="text-lg font-medium text-gray-900">
@@ -112,7 +112,7 @@ function FAQ() {
         </details>
 
         {/* FAQ Item 4 */}
-        <details className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+        <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
           {/* FAQ Item 4 Summary */}
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
             <h2 className="text-lg font-medium text-gray-900">
@@ -144,7 +144,7 @@ function FAQ() {
         </details>
 
         {/* FAQ Item 5 */}
-        <details className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+        <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
           {/* FAQ Item 5 Summary */}
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
             <h2 className="text-lg font-medium text-gray-900">
