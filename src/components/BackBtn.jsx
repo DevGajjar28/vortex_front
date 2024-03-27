@@ -1,13 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function BackBtn() {
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
-    <>
     <div className="fixed left-8 top-28">
-      {/* Border */}
-      <a
+      <button
         className="inline-block rounded-full border border-indigo-600 p-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
-        href="/"
+        onClick={handleGoBack}
       >
         <span className="sr-only">Back</span>
         <svg
@@ -24,11 +29,8 @@ function BackBtn() {
             d="M10 19l-7-7m0 0l7-7m-7 7h18"
           />
         </svg>
-      </a>
+      </button>
     </div>
-
-
-    </>
   );
 }
 

@@ -43,16 +43,16 @@
 
 .masonry-grid {
   display: flex;
-  margin-left: -16px; /* Adjust according to your layout */
+  margin-left: -16px; 
   width: auto;
 }
 
 .masonry-grid_column {
   background-clip: padding-box;
-  padding-left: 16px; /* Adjust according to your layout */
+  padding-left: 16px; 
 }
 
 .masonry-grid_item {
-  margin-bottom: 16px; /* Adjust according to your layout */
+  margin-bottom: 16px; 
 }
 

@@ -1,15 +1,17 @@
-import Footer from "../components/Footer";
-import Toggle from "../components/Toggle";
+import React from "react";
+import Footer from "../components/Footer"
 
-export default function Advertise() {
+// import Toggle from "../components/Toggle";
+
+function Advertise() {
   return (
     <>
 
-    <Toggle />
+    {/* <Toggle /> */}
       {/* Main section for advertisement */}
       <div className="bg-white">
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+          <div className="relative isolate overflow-hidden bg-gray-800 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
             {/* Background SVG */}
             <svg
               viewBox="0 0 1024 1024"
@@ -25,8 +27,8 @@ export default function Advertise() {
               />
               <defs>
                 <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-                  <stop stopColor="#7775D6" />
-                  <stop offset={1} stopColor="#E935C1" />
+                  <stop stopColor="#151515" />
+                  <stop offset={1} stopColor="#151515" />
                 </radialGradient>
               </defs>
             </svg>
@@ -60,7 +62,7 @@ export default function Advertise() {
             <div className="relative mt-16 h-80 lg:mt-8">
               <img
                 className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+                src="https://images.unsplash.com/photo-1527368746281-798b65e1ac6e?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="App screenshot"
                 width={1824}
                 height={1080}
@@ -105,7 +107,7 @@ export default function Advertise() {
                 <li>
                   <a href="#" className="group block">
                     <img
-                      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1598&q=80"
+                      src="https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt=""
                       className="aspect-square w-full rounded object-cover"
                     />
@@ -126,7 +128,7 @@ export default function Advertise() {
                 <li>
                   <a href="#" className="group block">
                     <img
-                      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1598&q=80"
+                      src="https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt=""
                       className="aspect-square w-full rounded object-cover"
                     />
@@ -421,7 +423,7 @@ export default function Advertise() {
 
           <a
             className="mt-8 inline-block w-full bg-black py-4 text-sm font-bold uppercase tracking-widest text-white"
-            href="/contact"
+            href="/Ads"
           >
             Start Advertising
           </a>
@@ -437,3 +439,5 @@ export default function Advertise() {
     </>
   );
 }
+
+export default Advertise

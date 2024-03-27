@@ -234,8 +234,8 @@ function Search() {
 
       {/* Modal for displaying image in full-screen */}
       {selectedImage && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="max-w-4xl w-full p-4 bg-white rounded-md overflow-hidden relative">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-50 overflow-y-auto">
+          <div className="max-w-screen max-h-screen w-full p-4 bg-white relative">
             <button
               className="absolute top-4 right-4 text-gray-700 hover:text-gray-900"
               onClick={closeImageFullScreen}
@@ -255,12 +255,16 @@ function Search() {
                 />
               </svg>
             </button>
+
+            
             <img
               src={selectedImage.urls.full}
               alt={selectedImage.alt_description}
-              className="w-80"
+              className="w-full h-auto"
             />
           </div>
+
+
           <button
             disabled={downloads >= MAX_DOWNLOADS}
             className={`mt-4 ${

@@ -145,11 +145,11 @@ function History() {
                       creativity knows no bounds.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
-                      <img
+                      {/* <img
                         src="https://source.unsplash.com/50x50/?portrait?1"
                         alt=""
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                      />
+                      /> */}
                       <div>
                         <p className="text-lg font-semibold">Founding Vision</p>
                       </div>
@@ -168,11 +168,11 @@ function History() {
                       where creativity flourished.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
-                      <img
+                      {/* <img
                         src="https://source.unsplash.com/50x50/?portrait?2"
                         alt=""
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                      />
+                      /> */}
                       <div>
                         <p className="text-lg font-semibold">
                           Community Growth and Engagement
@@ -192,11 +192,11 @@ function History() {
                       unwavering.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
-                      <img
+                      {/* <img
                         src="https://source.unsplash.com/50x50/?portrait?3"
                         alt=""
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                      />
+                      /> */}
                       <div>
                         <p className="text-lg font-semibold">
                           Content Curation Evolution
@@ -212,11 +212,11 @@ function History() {
                       empower users to discover and share content seamlessly.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
-                      <img
+                      {/* <img
                         src="https://source.unsplash.com/50x50/?portrait?4"
                         alt=""
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                      />
+                      /> */}
                       <div>
                         <p className="text-lg font-semibold">
                           User Engagement Innovation
