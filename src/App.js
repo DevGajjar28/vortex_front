@@ -17,7 +17,6 @@ import Contribute from "./pages/Contribute";
 import Collection from "./pages/Collection";
 import CollectionDetail from "./components/CollectionDetail";
 import UserProfile from "./components/UserProfile";
-import UserChange from "./components/UserChange";
 import BackBtn from "./components/BackBtn";
 
 
@@ -63,8 +62,8 @@ function App() {
         <Route path="/Contribute" render={() => <Layout><Contribute /></Layout>} />
         <Route path="/Collection" render={() => <Layout><Collection /></Layout>} />
         <Route path="/Collection/:collectionId" component={CollectionDetail} />
-        <Route path="/UserProfile" render={() => <Layout><UserProfile /></Layout>} />
-        <Route path="/UserChange" render={() => <Layout><UserChange /></Layout>} />
+        <Route path="/UserProfile" render={() => <UserProfile />} />
+        {/* <Route path="/UserChange" render={() => <Layout><UserChange /></Layout>} /> */}
       </Switch>
 
 

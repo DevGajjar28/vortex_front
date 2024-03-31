@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import * as Yup from "yup";
+import { handleRegistration } from "../axios/api";
 
 
 
@@ -16,6 +17,7 @@ function Registration() {
     // marketing_accept: Yup.boolean().oneOf([true], "You must accept marketing terms"),
   
   })
+  
   
   const handleSubmit = (e) => {
     e.preventDefault();
