@@ -2,14 +2,6 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-// Array containing features included in premium membership
-const includedFeatures = [
-  "Unlimited downloads",
-  "Member resources",
-  "Entry to annual conference",
-  "Official member t-shirt",
-];
-
 // Default export function for the Premium page
 export default function Premium() {
   return (
@@ -17,208 +9,199 @@ export default function Premium() {
       {/* Navbar component */}
       <Navbar />
 
-      {/* Section for pricing information */}
-      <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <section className="py-6 bg-gray-700 dark:bg-gray-100 text-gray-50 dark:text-900 mt-20">
+        <div className="container mx-auto p-4 sm:p-10">
+          <div className="mb-16 space-y-4 text-center">
+            <h1 className="text-4xl font-semibold leading-tight">Pricing</h1>
+            <p className="px-4 sm:px-8 lg:px-24">
+              {" "}
               Upgrade to Unsplash and start creating with exclusive images.
-            </h2>
-            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-              Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et
-              quasi iusto modi velit ut non voluptas in. Explicabo id ut
-              laborum.
-            </p> */}
+            </p>
+            {/* <div>
+				<button className="px-4a py-1 font-semibold border rounded-l-lg bg-violet-400 dark:bg-violet-600 border-violet-400 dark:border-violet-600 text-gray-900 dark:text-gray-50">Monthly</button>
+				<button className="px-4 py-1 border rounded-r-lg border-violet-400 dark:border-violet-600">Annually</button>
+			</div> */}
           </div>
-
-          {/* Section for lifetime membership details */}
-
-          <section className="py-6 bg-gray-800 dark:bg-gray-100 text-gray-50 dark:text-gray-900 mt-12">
-            <div className="container mx-auto flex flex-col items-center justify-center max-w-lg p-4 lg:max-w-full sm:p-10 lg:flex-row">
-              <div className="flex flex-col items-center justify-center flex-1 p-4 pb-8 sm:p-8 lg:p-16 bg-gray-900 dark:bg-gray-50">
-                <span className="text-sm">Basic</span>
-                <p className="text-5xl font-bold text-center">20 &#8377;s</p>
-                <div className="mt-6 text-left">
-                  <p>25 download perday</p>
-                  <p>10 images upload</p>
-                  <p>Customer Support</p>
-                </div>
-                <button className="px-8 py-3 mt-6 text-lg font-semibold border rounded sm:mt-12 border-gray-700 dark:border-gray-300">
-                  Sign up
-                </button>
-              </div>
-              <div className="flex flex-col items-center justify-center flex-1 p-4 pb-8 text-center rounded-md sm:p-8 lg:p-16 bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
-                <span className="text-sm font-semibold">Advanced</span>
-                <p className="text-5xl font-bold">89 &#8377;</p>
-                <div className="mt-6 text-left-black font-bold">
-                  <p>unlimited Download</p>
-                  <p>unlimited Upload</p>
-                  <p>Customer Support</p>
-                </div>
-                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-gray-800 dark:bg-gray-100 text-gray-50 dark:text-gray-900">
-                  Sign up
-                </button>
-              </div>
+          <div className="grid max-w-md grid-cols-1 gap-6 mx-auto auto-rows-fr lg:max-w-full lg:gap-2 xl:gap-6 lg:grid-cols-3">
+            <div className="relative z-0 flex flex-col items-center p-8 border rounded-md">
+              <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+                Personal
+              </span>
+              <p className="my-6 text-4xl font-bold text-violet-400 dark:text-violet-600">
+                FREE
+              </p>
+              <ul className="flex-1 space-y-2">
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>Daily 5 downloads</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>Customer Support</span>
+                </li>
+              </ul>
+              <a
+                href="/Home"
+                className="px-4 py-2 mt-4 font-semibold uppercase border rounded-lg md:mt-12 sm:py-3 sm:px-8 border-violet-400 dark:border-violet-600"
+              >
+                Subscribe
+              </a>
             </div>
-          </section>
+            <div className="relative flex flex-col items-center p-8 border-2 rounded-md border-violet-400 dark:border-violet-600 bg-gray-800 dark:bg-gray-100">
+              <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+                Professional
+              </span>
+              <p className="flex items-center justify-center my-6 space-x-2 font-bold">
+                <span className="text-lg line-through text-gray-300 dark:text-gray-700">
+                  &nbsp;30&#x20b9;&nbsp;
+                </span>
+                <span className="pb-2 text-4xl">19&#x20b9;</span>
+              </p>
+              <ul className="flex-1 space-y-2">
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>Daily 20 Downloads</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>Customer Support</span>
+                </li>
+                {/* <li className="flex items-center space-x-2">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-violet-400 dark:text-violet-600">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+						</svg>
+						<span>Aliquam</span>
+					</li> */}
+                {/* <li className="flex items-center space-x-2">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-violet-400 dark:text-violet-600">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+						</svg>
+						<span>Lumet consectetur facilis</span>
+					</li> */}
+              </ul>
+              <a
+                href="/subscribe"
+                className="px-4 py-2 mt-4 font-semibold uppercase border rounded-lg md:mt-12 sm:py-3 sm:px-8 border-violet-400 dark:border-violet-600"
+              >
+                Subscribe
+              </a>
+            </div>
+            <div className="relative z-0 flex flex-col items-center p-8 border rounded-md bg-gray-800 dark:bg-gray-100">
+              <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+                Enterprise
+              </span>
+              <p className="flex items-center justify-center my-6 space-x-2 font-bold">
+                <span className="text-lg line-through text-gray-300 dark:text-gray-700">
+                  &nbsp;49&#x20b9;&nbsp;
+                </span>
+                <span className="pb-2 text-4xl">39&#x20b9;</span>
+                {/* <span className="text-lg">/mo</span> */}
+              </p>
+              <ul className="flex-1 space-y-2">
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>Unlimited Downloads</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="w-6 h-6 text-violet-400 dark:text-violet-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                  <span>24*7 Customer Support</span>
+                </li>
+
+                {/* <li className="flex items-center space-x-2">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-violet-400 dark:text-violet-600">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+						</svg>
+						<span>Lumet consectetur adipisicing</span>
+					</li> */}
+              </ul>
+              <a
+                href="/subscribe"
+                className="px-4 py-2 mt-4 font-semibold uppercase border rounded-lg md:mt-12 sm:py-3 sm:px-8 border-violet-400 dark:border-violet-600"
+              >
+                Subscribe
+              </a>
+            </div>
+          </div>
         </div>
-
-        {/* FAQ  section*/}
-
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 mt-20 text-center mt-48">
-          Frequently asked questions
-        </h2>
-
-        <div className="space-y-4 mt-28 border-4 border-black rounded-lg p-4 md:p-8">
-          <details
-            className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
-            open
-          >
-            <summary className="flex cursor-pointer items-center justify-between gap-1.5">
-              <h2 className="text-lg font-medium text-gray-900">
-                What is Vortex Premium?
-              </h2>
-
-              <span className="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <p className="mt-4 leading-relaxed text-gray-700">
-              Vortex Premium is a subscription service that offers exclusive
-              benefits and features to enhance your experience on the platform.
-            </p>
-          </details>
-
-          <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between gap-1.5">
-              <h2 className="text-lg font-medium text-gray-900">
-                What benefits do I get with Vortex Premium?
-              </h2>
-
-              <span className="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <p className="mt-4 leading-relaxed text-gray-700">
-              With Vortex Premium, you'll enjoy an ad-free browsing experience,
-              access to premium content, advanced search filters, and priority
-              customer support.
-            </p>
-          </details>
-
-          <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between gap-1.5">
-              <h2 className="text-lg font-medium text-gray-900">
-                How much does Vortex Premium cost?
-              </h2>
-
-              <span className="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <p className="mt-4 leading-relaxed text-gray-700">
-              The cost of Vortex Premium varies depending on the subscription
-              plan you choose.
-            </p>
-          </details>
-
-          <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between gap-1.5">
-              <h2 className="text-lg font-medium text-gray-900">
-                Do I need a Vortex Premium subscription to upload content?
-              </h2>
-
-              <span className="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <p className="mt-4 leading-relaxed text-gray-700">
-              No, uploading content is free for all users. However, Vortex
-              Premium offers additional benefits such as increased visibility
-              for your uploads and access to advanced analytics.
-            </p>
-          </details>
-
-          <details className="group border-s-4 border-grey-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between gap-1.5">
-              <h2 className="text-lg font-medium text-gray-900">
-                How do I contact customer support for assistance with my Vortex
-                Premium subscription?
-              </h2>
-
-              <span className="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <p className="mt-4 leading-relaxed text-gray-700">
-              If you have any questions or need assistance with your Vortex
-              Premium subscription, please don't hesitate to contact our
-              dedicated customer support team. We're here to help you make the
-              most of your premium experience.
-            </p>
-          </details>
-        </div>
-      </div>
+      </section>
 
       <Footer />
     </>

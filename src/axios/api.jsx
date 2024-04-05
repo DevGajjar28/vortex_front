@@ -1,53 +1,56 @@
-// api.js
+import axios from "axios";
+// import { signOut } from "../pages/Registration";
+// import { Router } from "react-router-dom/cjs/react-router-dom.min";
 
-import axios from 'axios';
+const api = axios.create({
+  baseURL: process.env.DJANGO_BACKEND_URL,
+});
 
-// Add a request interceptor for POST requests
-axios.interceptors.request.use(
-  (config) => {
-    // Modify config for POST requests here if needed
+// Request interceptor
+api.interceptors.request.use(
+  async (config) => {
+    const token = window.localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
-    // Handle request errors
     return Promise.reject(error);
   }
 );
 
-// Add a response interceptor for POST requests
-axios.interceptors.response.use(
-  (response) => {
-    // Handle successful responses for POST requests
+// Response interceptor
+api.interceptors.response.use(
+  async (response) => {
     return response;
   },
-  (error) => {
-    // Handle response errors for POST requests
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const refresh_token = localStorage.getItem("refresh");
+      if (refresh_token) {
+        try {
+          const res = await api.post("/api/login/refresh/", { refresh: refresh_token });
+          localStorage.setItem("token", res?.access);
+          localStorage.setItem("refresh", res?.refresh);
+          api.defaults.headers["Authorization"] = `Bearer ${res.data.access}`;
+          originalRequest.headers["Authorization"] = `Bearer ${res.data.access}`;
+          return api(originalRequest);
+        } catch (refreshError) {
+          console.log("Token refresh failed:", refreshError);
+          // signOut();  Log out the user if token refresh fails
+          // Optionally, you can clear localStorage or redirect to login
+        }
+      } else {
+        console.log("Refresh token not found");
+        // signOut();  Log out the user if refresh token is missing
+        // Optionally, you can clear localStorage or redirect to login
+      }
+    }
     return Promise.reject(error);
   }
 );
 
-// Function to handle the registration form submission
-export const handleRegistration = async (formData) => {
-  try {
-    // Make a POST request using axios
-    const response = await axios.post('http://localhost:8000/api/register/', formData);
-    console.log("Registration successful:", response.data);
-    return response.data; // Return data if needed
-  } catch (error) {
-    console.error("Registration failed:", error);
-    throw error; // Throw error to handle in the calling function
-  }
-};
-
-// Function to handle the login form submission
-export const handleLogin = async (formData) => {
-  try {
-    // Make a POST request using axios
-    const response = await axios.post('http://localhost:8000/api/login/', formData);
-    console.log("Login successful:", response.data);
-    return response.data; // Return data if needed
-  } catch (error) {
-    console.error("Login failed:", error);
-    throw error; // Throw error to handle in the calling function
-  }
-};
+export default api;

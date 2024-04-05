@@ -1,50 +1,70 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useFormik } from "formik";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
-
-
+import api from "../axios/api";
 
 function Login() {
+  const history = useHistory();
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post(`http://127.0.0.1:8000/api/login/`, {
+        username: formik.values.email,
+        password: formik.values.password,
+      });
+      if (res.data) {
+        console.log(res?.data);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
+        localStorage.setItem("token", res?.data?.access);
+        localStorage.setItem("refresh", res?.data?.refresh);
+        history.push("/");
+      }
+    } catch (error) {
+      console.log(
+        error?.response?.data?.data?.message || "Something went wrong"
+      );
+    }
+  };
 
+  const checklogin = async () => {
+    try {
+      const response = await api.get("http://127.0.0.1:8000/api/profile/");
+      if (response?.data) {
+        console.log(response.data);
+        history.push("/Home");
+      }
+    } catch (error) {
+      console.log(error?.response?.data?.message || "Something went wrong");
+    }
+  };
+
+  
   const schema = Yup.object().shape({
-    email: Yup.string().email("Invalid email address").required("Email is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-    setErrors((prevState) => ({ ...prevState, email: "" })); // Reset email error
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: handleLogin,
+    validationSchema: schema,
+  });
 
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-    setErrors((prevState) => ({ ...prevState, password: "" })); // Reset password error
-  };
-
+  const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  useEffect(() => {
+    checklogin();
+  }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await schema.validate({ email, password }, { abortEarly: false });
-      // Validation passed, proceed with login
-      console.log("Form data is valid:", { email, password });
-    } catch (error) {
-      const validationErrors = {};
-      error.inner.forEach((e) => {
-        validationErrors[e.path] = e.message;
-      });
-      setErrors(validationErrors);
-    }
-  };
   return (
     <>
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
@@ -63,7 +83,7 @@ function Login() {
           <form
             action="#"
             className="mx-auto mb-0 mt-8 max-w-md space-y-4"
-            onSubmit={handleSubmit}
+            onSubmit={formik.handleSubmit}
           >
             <div>
               <label htmlFor="email" className="sr-only">
@@ -72,15 +92,19 @@ function Login() {
 
               <div className="relative">
                 <input
+                  id="email"
+                  name="email"
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
-                  value={email}
-                  onChange={handleChangeEmail}
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
+
                   // onChange={(e) => setEmail(e.target.value)}
-              
                 />
-                {errors.email && <p className="text-red-500">{errors.email}</p>}
+                {formik.errors.email && (
+                  <p className="text-red-500">{formik.errors.email}</p>
+                )}
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -107,60 +131,66 @@ function Login() {
 
               <div className="relative">
                 <input
+                  id="password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
-                  value={password}
-                  onChange={handleChangePassword}
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
                   // onChange={(e) => setPassword(e.target.value)}
-                  
                 />
-                {errors.password && <p className="text-red-500">{errors.password}</p>}
-                
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4" onClick={togglePasswordVisibility}>
-                {showPassword ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="size-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="size-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
+                {formik.errors.password && (
+                  <p className="text-red-500">{formik.errors.password}</p>
                 )}
+
+                <span
+                  className="absolute inset-y-0 end-0 grid place-content-center px-4"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  )}
                 </span>
               </div>
             </div>

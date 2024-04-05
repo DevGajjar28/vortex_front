@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
+import { useFormik } from 'formik';
 import "yup-phone";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-
-  const [errors, setErrors] = useState({});
+  
+  const handleContact = async() => {
+    console.log(formik.values)
+  }
 
   const schema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -22,35 +18,19 @@ function Contact() {
     message: Yup.string().required("Message is required"),
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email:'',
+      phone:'',
+      message:'',
+    },
+    onSubmit: handleContact,
+    validationSchema:schema
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
-    schema
-      .validate(formData, { abortEarly: false }) // Allow Yup to collect all errors
-      .then(() => {
-        // The form data is valid, do something with it
-        console.log("Form data is valid:", formData);
-        // Reset errors
-        setErrors({});
-        // Here you can perform form submission logic, like sending data to a server
-      })
-      .catch((error) => {
-        // There are errors in the form data
-        const newErrors = {};
-        error.inner.forEach((err) => {
-          newErrors[err.path] = err.message;
-        });
-        setErrors(newErrors);
-      });
-  };
+
+ 
 
   return (
     <section className="bg-gray-100">
@@ -77,7 +57,7 @@ function Contact() {
           </div>
 
           <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={formik.handleSubmit} className="space-y-4">
               <div>
                 <label className="sr-only" htmlFor="name">
                   Name
@@ -88,10 +68,10 @@ function Contact() {
                   type="text"
                   id="name"
                   name="name"
-                  onChange={handleChange}
-                  value={formData.name}
+                  onChange={formik.handleChange}
+                  value={formik.values.name}
                 />
-                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                {formik.errors.name && <p className="text-red-500 text-sm">{formik.errors.name}</p>}
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -105,10 +85,10 @@ function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    onChange={handleChange}
-                    value={formData.email}
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
                   />
-                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                  {formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
                 </div>
 
                 <div>
@@ -121,10 +101,10 @@ function Contact() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    onChange={handleChange}
-                    value={formData.phone}
+                    onChange={formik.handleChange}
+                    value={formik.values.phone}
                   />
-                  {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+                  {formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
                 </div>
               </div>
 
@@ -139,10 +119,10 @@ function Contact() {
                   rows="8"
                   id="message"
                   name="message"
-                  onChange={handleChange}
-                  value={formData.message}
+                  onChange={formik.handleChange}
+                  value={formik.values.message}
                 ></textarea>
-                {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+                {formik.errors.message && <p className="text-red-500 text-sm">{formik.errors.message}</p>}
               </div>
 
               <div className="mt-4">

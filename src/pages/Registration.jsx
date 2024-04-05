@@ -1,13 +1,31 @@
 import React,{useState} from "react";
 import * as Yup from "yup";
-import { handleRegistration } from "../axios/api";
-
+import { useFormik } from 'formik';
+// import { handleRegistration } from "../axios/api";
+import axios from 'axios';
+// import api from "../axios/api";
 
 
 function Registration() {
   const [errors, setErrors] = useState({});
-  
 
+  
+  const handleRegistration = async (values) => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/profile/", values);
+      const { token } = response.data; // Assuming your API returns a token
+      localStorage.setItem("token", token); // Store the token in local storage
+      // Redirect user to home page or any other page
+      window.location.href = "/home";
+    } catch (error) {
+      setErrors(error.response.data); // Assuming your API returns validation errors
+    }
+  };
+
+
+  // const handleRegistration = async() => {
+  //   console.log(formik.values)
+  // }
   const schema = Yup.object().shape({
     first_name: Yup.string().required("First name is required"),
     last_name: Yup.string().required("Last name is required"),
@@ -16,37 +34,23 @@ function Registration() {
     password_confirmation: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Password confirmation is required"),
     // marketing_accept: Yup.boolean().oneOf([true], "You must accept marketing terms"),
   
-  })
+  });
+  const formik = useFormik({
+    initialValues: {
+      first_name: '',
+      last_name: '',
+      email:'',
+      password:'',
+      password_confirmation:'',
+    },
+    onSubmit: handleRegistration,
+    validationSchema:schema
+  });
   
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
   
-    const formData = {
-      first_name: e.target.first_name.value,
-      last_name: e.target.last_name.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      password_confirmation: e.target.password_confirmation.value,
-      // marketing_accept: e.target.marketing_accept.value
-    };
   
-    schema
-      .validate(formData, { abortEarly: false }) // Allow Yup to collect all errors
-      .then(() => {
-        // The form data is valid, do something with it
-        console.log("Form data is valid:", formData);
-      })
-      .catch((error) => {
-        // There are errors in the form data
-        const newErrors = {};
-        error.inner.forEach((err) => {
-          newErrors[err.path] = err.message;
-        });
-        setErrors(newErrors);
-      });
-      
-  };
+
   return (
     
     <section className="bg-white">
@@ -109,16 +113,18 @@ function Registration() {
               </a>
 
               <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                Welcome to Squid 🦑
+                Welcome to Vortex 🦑
               </h1>
 
               <p className="mt-4 leading-relaxed text-gray-500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
+              Welcome to Vortex, your go-to platform for all things creative!
+              Dive into a world of endless inspiration, where creativity knows
+              no bounds and every image tells a story. Join our vibrant
+              community today and unleash your imagination with Vortex!
               </p>
             </div>
 
-            <form action="#" className="mt-8 grid grid-cols-6 gap-6" onSubmit={handleSubmit}>
+            <form action="#" className="mt-8 grid grid-cols-6 gap-6" onSubmit={formik.handleSubmit}>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="FirstName"
@@ -132,8 +138,10 @@ function Registration() {
                   id="FirstName"
                   name="first_name"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
+                  onChange={formik.handleChange}
+                  value={formik.values.first_name}
                 />
-                {errors.first_name && <p className="text-red-500 text-sm">{errors.first_name}</p>}
+                {formik.errors.first_name && <p className="text-red-500 text-sm">{formik.errors.first_name}</p>}
 
 
               </div>
@@ -151,8 +159,10 @@ function Registration() {
                   id="LastName"
                   name="last_name"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
+                  onChange={formik.handleChange}
+                  value={formik.values.last_name}
                 />
-                {errors.last_name && <p className="text-red-500 text-sm">{errors.last_name}</p>}
+                {formik.errors.last_name && <p className="text-red-500 text-sm">{formik.errors.last_name}</p>}
 
               </div>
 
@@ -170,8 +180,10 @@ function Registration() {
                   id="Email"
                   name="email"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                {formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
 
               </div>
 
@@ -189,8 +201,10 @@ function Registration() {
                   id="Password"
                   name="password"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
                 />
-                {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+                {formik.errors.password && <p className="text-red-500 text-sm">{formik.errors.password}</p>}
 
               </div>
 
@@ -207,12 +221,14 @@ function Registration() {
                   id="PasswordConfirmation"
                   name="password_confirmation"
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-12 px-3"
+                  onChange={formik.handleChange}
+                  value={formik.values.password_confirmation}
                 />
-                {errors.password_confirmation && <p className="text-red-500 text-sm">{errors.password_confirmation}</p>}
+                {formik.errors.password_confirmation && <p className="text-red-500 text-sm">{formik.errors.password_confirmation}</p>}
 
               </div>
 
-              <div className="col-span-6">
+              {/* <div className="col-span-6">
                 <label htmlFor="MarketingAccept" className="flex gap-4">
                   <input
                     type="checkbox"
@@ -226,7 +242,7 @@ function Registration() {
                     company announcements.
                   </span>
                 </label>
-              </div>
+              </div> */}
 
               <div className="col-span-6">
                 <p className="text-sm text-gray-500">
@@ -244,7 +260,9 @@ function Registration() {
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                <button 
+                type="submit"
+                className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
                   Create an account
                 </button>
 
