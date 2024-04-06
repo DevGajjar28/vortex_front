@@ -4,8 +4,43 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import api from "../axios/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Flip } from 'react-toastify';
+
+
 
 function Login() {
+
+  const ToastSuccess = (msg) => {
+    toast.success(msg, {
+      position: "top-right",
+      autoClose: 3000,
+      transition: Flip,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  
+  const ToastFailure = (msg) => {
+    toast.error(msg, {
+      position: "top-right",
+      autoClose: 2000,
+      transition: Flip,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  
+
   const history = useHistory();
   const handleLogin = async () => {
     try {
@@ -24,6 +59,7 @@ function Login() {
       console.log(
         error?.response?.data?.data?.message || "Something went wrong"
       );
+      toast.error('Login failed. Please try again.');
     }
   };
 
@@ -67,6 +103,7 @@ function Login() {
 
   return (
     <>
+    <ToastContainer />
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
@@ -206,6 +243,7 @@ function Login() {
               <button
                 type="submit"
                 className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+                onClick={ToastSuccess}
               >
                 Sign in
               </button>

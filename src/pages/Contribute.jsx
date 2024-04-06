@@ -164,7 +164,7 @@ function Contribute() {
               />
               <div className="-space-y-1">
                 <h2 className="text-sm font-semibold leading-none">
-                  leroy_jenkins72
+                 Dev Gajjar
                 </h2>
                 <span className="inline-block text-xs leading-none text-gray-400">
                   Somewhere
@@ -269,7 +269,7 @@ function Contribute() {
                   />
                 </div>
                 <span className="text-sm">
-                  Liked by <span className="font-semibold">Mamba UI</span> and{" "}
+                  Liked by <span className="font-semibold">Vortex</span> and{" "}
                   <span className="font-semibold">86 others</span>
                 </span>
               </div>
@@ -277,8 +277,8 @@ function Contribute() {
             {/* Comments Section */}
             <div className="space-y-3">
               <p className="text-sm">
-                <span className="text-base font-semibold">leroy_jenkins72</span>{" "}
-                Nemo ea quasi debitis impedit!
+                <span className="text-base font-semibold">Jeet</span>{" "}
+                Great Picture
               </p>
               <input
                 type="text"
@@ -316,10 +316,10 @@ function Contribute() {
               />
               <div className="-space-y-1">
                 <h2 className="text-sm font-semibold leading-none">
-                  leroy_jenkins72
+                  Mihir_jeet
                 </h2>
                 <span className="inline-block text-xs leading-none text-gray-400">
-                  Somewhere
+                  no way
                 </span>
               </div>
             </div>
@@ -421,16 +421,16 @@ function Contribute() {
                   />
                 </div>
                 <span className="text-sm">
-                  Liked by <span className="font-semibold">Mamba UI</span> and{" "}
-                  <span className="font-semibold">86 others</span>
+                  Liked by <span className="font-semibold">Dev</span> and{" "}
+                  <span className="font-semibold">90 others</span>
                 </span>
               </div>
             </div>
             {/* Comments Section */}
             <div className="space-y-3">
               <p className="text-sm">
-                <span className="text-base font-semibold">leroy_jenkins72</span>{" "}
-                Nemo ea quasi debitis impedit!
+                <span className="text-base font-semibold">Ksschool</span>{" "}
+                Great Work
               </p>
               <input
                 type="text"
@@ -468,7 +468,7 @@ function Contribute() {
                 alt=""
               />
               <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                <div className="font-semibold text-gray-900">Judith Black</div>
+                <div className="font-semibold text-gray-900">Mr Silvans Christian</div>
                 <svg
                   viewBox="0 0 2 2"
                   width={3}
@@ -478,7 +478,7 @@ function Contribute() {
                 >
                   <circle cx={1} cy={1} r={1} />
                 </svg>
-                <div className="text-gray-600">CEO of Workcation</div>
+                <div className="text-gray-600">CEO of NextStep Solutions</div>
               </div>
             </figcaption>
           </figure>
