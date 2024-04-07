@@ -3,21 +3,24 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 // import { handleRegistration } from "../axios/api";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 // import api from "../axios/api";
 
 function Registration() {
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
-  const handleRegistration = async (values) => {
+  const handleRegistration = async () => {
+    formik.values["username"] = formik.values.email
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/profile/",
-        values
+        "http://127.0.0.1:8000/api/user/",
+        formik.values
       );
-      const { token } = response.data; // Assuming your API returns a token
-      localStorage.setItem("token", token); // Store the token in local storage
-      // Redirect user to home page or any other page
-      window.location.href = "/home";
+      if(response.data){
+        history.push("/login");
+      }
+      
     } catch (error) {
       setErrors(error.response.data); // Assuming your API returns validation errors
     }

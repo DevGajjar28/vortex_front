@@ -55,7 +55,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [profileData, setProfileData] = useState({});
+  const [profileData, setProfileData] = useState();
   const history = useHistory();
 
   const checklogin = async () => {
@@ -66,9 +66,10 @@ export default function Navbar() {
       }
     } catch (error) {
       console.log(error?.response?.data?.message || "Something went wrong");
+      setProfileData()
     }
   };
-
+  console.log(profileData)
   useEffect(() => {
     checklogin();
   }, []);
@@ -76,21 +77,14 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       // Clear local storage
-      localStorage.removeItem('accessToken'); // assuming accessToken is stored in localStorage
+      localStorage.clear();
       
-      // You should make an API call to log out the user on the server-side
-      // After successful logout, you can clear the profileData and redirect the user to the login page
-      // Example:
       console.log("Logging out...");
-      await api.post("http://127.0.0.1:8000/api/profile"); // adjust the logout API endpoint accordingly
       
       // Clear profile data
-      setProfileData({});
+      setProfileData();
       
-      // Call checklogin to update user authentication status
-      await checklogin();
-      
-      history.push("/login");  // Redirect to login page after logout
+      history.push("/home");  // Redirect to login page after logout
     } catch (error) {
       console.error("Logout error:", error); // Log any errors that occur during logout
       console.log(error?.response?.data?.message || "Something went wrong");
