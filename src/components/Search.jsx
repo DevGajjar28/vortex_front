@@ -1,65 +1,20 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Masonry from "react-masonry-css";
+import { useQuery } from "@tanstack/react-query";
 
-const API_URL = "https://api.unsplash.com/search/photos";
-const IMAGES_PER_PAGE = 20;
 const MAX_DOWNLOADS = 5;
 
 function Search() {
   const searchInput = useRef(null);
-  const [images, setImages] = useState([]);
+  const [category, setCategory] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
   const [downloads, setDownloads] = useState(0);
 
-  const fetchImages = useCallback(async () => {
-    try {
-      // if (searchInput.current.value) {
-        setErrorMsg("");
-        setLoading(true);
-        const { data } = await axios.get(
-          `${API_URL}?query=${searchInput.current.value}&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${process.env.REACT_APP_ACCESS_KEY}`
-        );
-        setImages(data.results);
-        setTotalPages(data.total_pages);
-        setLoading(false);
-      // }
-    } catch (error) {
-      setErrorMsg("Error fetching images. Try again later");
-      console.log(error);
-      setLoading(false);
-    }
-  }, [page]);
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        setErrorMsg("");
-        setLoading(true);
-        const { data } = await axios.get(
-          `${API_URL}?query=nature&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${process.env.REACT_APP_ACCESS_KEY}`
-        );
-        setImages(data.results);
-        setTotalPages(data.total_pages);
-        setLoading(false);
-      } catch (error) {
-        setErrorMsg("Error fetching images. Try again later");
-        console.log(error);
-        setLoading(false);
-      }
-    };
-  
-    fetchImages();
-  }, []);
-  
-
   const resetSearch = () => {
     setPage(1);
-    fetchImages();
   };
 
   const handleSearch = (event) => {
@@ -103,13 +58,59 @@ function Search() {
     }
   };
 
+  const getCategory = async () => {
+    try {
+      const res = await axios.get(`http://127.0.0.1:8000/api/category/`);
+      if (res.data) {
+        setCategory(res?.data?.map((data) => data.category_name));
+      }
+    } catch (error) {
+      console.log(
+        error?.response?.data?.data?.message || "Something went wrong"
+      );
+    }
+  };
+
+  const getImages = async () => {
+    try {
+      const res = await axios.get(
+        `http://127.0.0.1:8000/api/fileupload/?page=${page}`
+      );
+      if (res.data.results) {
+        // console.log(res.data.get('results'))
+        setTotalPages(parseInt(res.data.count / 10) + 1);
+        return res.data.results;
+      }
+      return [];
+    } catch (error) {
+      console.log(
+        error?.response?.data?.data?.message || "Something went wrong"
+      );
+      return [];
+    }
+  };
+
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ["fetch-images", page],
+    queryFn: getImages,
+  });
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
   return (
     <>
-      <div className="container mx-auto px-4 mt-20" >
-        <h1 className="text-3xl font-bold mb-4 flex justify-center">Image Search</h1>
-        {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}
+      <div className="container mx-auto px-4 mt-20">
+        <h1 className="text-3xl font-bold mb-4 flex justify-center">
+          Image Search
+        </h1>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="flex mb-4 flex justify-center">
-          <form onSubmit={handleSearch} className="flex flex-col w-full max-w-md ">
+          <form
+            onSubmit={handleSearch}
+            className="flex flex-col w-full max-w-md "
+          >
             <input
               type="search"
               placeholder="Type something to search..."
@@ -120,98 +121,71 @@ function Search() {
         </div>
 
         <div className="flex flex-wrap space-x-2 mb-4 flex justify-center">
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("nature")}
-          >
-            Nature
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("birds")}
-          >
-            Birds
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("cats")}
-          >
-            Cats
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("mountain")}
-          >
-            Mountain
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("forest")}
-          >
-            Forest
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-            onClick={() => handleSelection("snow")}
-          >
-            Snow
-          </button>
+          {category.map((category, index) => (
+            <button
+              type="button"
+              key={index}
+              className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
+              onClick={() => handleSelection(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        {loading ? (
+        {isLoading ? (
           <p className="text-gray-700">Loading...</p>
         ) : (
           <>
-      <Masonry
-  breakpointCols={{ default: 3, 700: 2, 500: 1 }}
-  className="masonry-grid"
-  columnClassName="masonry-grid_column"
->
-  {images.map((image) => (
-    <div key={image.id} className="masonry-grid-item relative group">
-      <img
-        src={image.urls.full}
-        alt={image.alt_description}
-        className="object-cover w-full h-auto rounded-md cursor-pointer transition duration-300 ease-in-out transform hover:brightness-75 hover:shadow-lg hover:rounded-lg hover:transition"
-        onClick={() => openImageFullScreen(image)}
-      />
-      <div className="absolute bottom-0 right-0 mb-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <button
-          className={`bg-blue-500 text-white py-2 px-3 rounded hover:bg-blue-600 ${
-            downloads >= MAX_DOWNLOADS && "cursor-not-allowed"
-          }`}
-          onClick={() => downloadImage(image.urls.full)}
-          disabled={downloads >= MAX_DOWNLOADS}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm0 0v9m0 0H9m6 0h-3m3 0h3m-3 0h-3m3 0h3m-3 0h-3m3 0h3m-6 0h-3m0 0V9m0 0H9m3 0h3"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  ))}
-</Masonry>
-
+            <Masonry
+              breakpointCols={{ default: 3, 700: 2, 500: 1 }}
+              className="masonry-grid"
+              columnClassName="masonry-grid_column"
+            >
+              {data.map((image) => (
+                <div
+                  key={image.id}
+                  className="masonry-grid-item relative group"
+                >
+                  <img
+                    src={image.image}
+                    alt={image.alt_description}
+                    className="object-cover w-full h-auto rounded-md cursor-pointer transition duration-300 ease-in-out transform hover:brightness-75 hover:shadow-lg hover:rounded-lg hover:transition"
+                    onClick={() => openImageFullScreen(image)}
+                  />
+                  <div className="absolute bottom-0 right-0 mb-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                      className={`bg-blue-500 text-white py-2 px-3 rounded hover:bg-blue-600 ${
+                        downloads >= MAX_DOWNLOADS && "cursor-not-allowed"
+                      }`}
+                      onClick={() => downloadImage(image.image)}
+                      disabled={downloads >= MAX_DOWNLOADS}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="icon icon-tabler icons-tabler-outline icon-tabler-download"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                        <path d="M7 11l5 5l5 -5" />
+                        <path d="M12 4l0 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </Masonry>
 
             <div className="flex justify-between mt-4">
-              {page > 1 && (
+              {page > 2 && (
                 <button
                   onClick={() => setPage(page - 1)}
                   className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
@@ -256,14 +230,12 @@ function Search() {
               </svg>
             </button>
 
-            
             <img
-              src={selectedImage.urls.full}
+              src={selectedImage.image}
               alt={selectedImage.alt_description}
               className="w-full h-auto"
             />
           </div>
-
 
           <button
             disabled={downloads >= MAX_DOWNLOADS}
@@ -272,7 +244,7 @@ function Search() {
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-500 text-white py-2 px-14 rounded hover:bg-blue-600"
             } absolute top-14 right-14`}
-            onClick={() => downloadImage(selectedImage.urls.full)}
+            onClick={() => downloadImage(selectedImage.image)}
           >
             Download
           </button>
