@@ -1,31 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import { useQuery } from "@tanstack/react-query";
 
 const MAX_DOWNLOADS = 5;
 
 function Search() {
-  const searchInput = useRef(null);
   const [category, setCategory] = useState([]);
   const [page, setPage] = useState(1);
+  const [handleCat, setHandleCat] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
   const [downloads, setDownloads] = useState(0);
-
-  const resetSearch = () => {
-    setPage(1);
-  };
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    resetSearch();
-  };
-
-  const handleSelection = (Selection) => {
-    searchInput.current.value = Selection;
-    resetSearch();
-  };
 
   const openImageFullScreen = (image) => {
     setSelectedImage(image);
@@ -74,7 +60,7 @@ function Search() {
   const getImages = async () => {
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/fileupload/?page=${page}`
+        `http://127.0.0.1:8000/api/fileupload/?page=${page}&search=${handleCat}`
       );
       if (res.data.results) {
         // console.log(res.data.get('results'))
@@ -91,7 +77,7 @@ function Search() {
   };
 
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ["fetch-images", page],
+    queryKey: ["fetch-images", page, handleCat],
     queryFn: getImages,
   });
 
@@ -105,19 +91,19 @@ function Search() {
         <h1 className="text-3xl font-bold mb-4 flex justify-center">
           Image Search
         </h1>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {isError && <p className="text-red-500 mb-4">{error}</p>}
         <div className="flex mb-4 flex justify-center">
-          <form
-            onSubmit={handleSearch}
-            className="flex flex-col w-full max-w-md "
-          >
             <input
               type="search"
               placeholder="Type something to search..."
               className="border border-gray-300 rounded-md py-2 px-4 w-full "
-              ref={searchInput}
+              onBlur={(event) => setHandleCat(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  setHandleCat(event.target.value);
+                }
+              }}
             />
-          </form>
         </div>
 
         <div className="flex flex-wrap space-x-2 mb-4 flex justify-center">
@@ -126,7 +112,7 @@ function Search() {
               type="button"
               key={index}
               className="px-4 py-2 border rounded-md transition duration-300 ease-in-out hover:bg-gray-100"
-              onClick={() => handleSelection(category)}
+              onClick={() => setHandleCat(category)}
             >
               {category}
             </button>

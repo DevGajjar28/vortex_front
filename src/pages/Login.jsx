@@ -53,6 +53,7 @@ function Login() {
 
         localStorage.setItem("token", res?.data?.access);
         localStorage.setItem("refresh", res?.data?.refresh);
+        await checklogin();
         history.push("/");
       }
     } catch (error) {
@@ -63,12 +64,13 @@ function Login() {
     }
   };
 
-  const checklogin = async () => {
+  const checklogin = async (refresh) => {
     try {
       const response = await api.get("http://127.0.0.1:8000/api/profile/");
       if (response?.data) {
         console.log(response.data);
-        history.push("/Home");
+        localStorage.setItem("user", JSON.stringify(response.data))
+        refresh && history.push("/Home");
       }
     } catch (error) {
       console.log(error?.response?.data?.message || "Something went wrong");
@@ -98,7 +100,7 @@ function Login() {
   };
 
   useEffect(() => {
-    checklogin();
+    checklogin("refresh");
   }, []);
 
   return (
