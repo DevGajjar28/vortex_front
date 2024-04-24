@@ -3,15 +3,12 @@ import React, { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import { useQuery } from "@tanstack/react-query";
 
-const MAX_DOWNLOADS = 5;
-
 function Search() {
   const [category, setCategory] = useState([]);
   const [page, setPage] = useState(1);
   const [handleCat, setHandleCat] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [downloads, setDownloads] = useState(0);
 
   const openImageFullScreen = (image) => {
     setSelectedImage(image);
@@ -21,26 +18,41 @@ function Search() {
     setSelectedImage(null);
   };
 
-  const downloadImage = async (imageUrl) => {
+  const downloadImage = async (id) => {
     try {
-      if (downloads < MAX_DOWNLOADS) {
+      const res = await axios.get(
+        `http://127.0.0.1:8000/api/download-image/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log(res);
+      console.log(res?.data?.image.split("/"))
+      if (res.data) {
         // Check if the user has reached the download limit
-        const response = await axios.get(imageUrl, { responseType: "blob" });
+        const response = await axios.get(`http://127.0.0.1:8000${res?.data?.image}`, { responseType: "blob" });
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "image.jpg");
+        link.setAttribute("download", res?.data?.image.split("/").pop());
         document.body.appendChild(link);
         link.click();
         // Clean up the URL object after the download is complete
         window.URL.revokeObjectURL(url);
-        setDownloads(downloads + 1); // Increment download count
-      } else {
-        // Display message or take action when the user exceeds the download limit
-        console.log("You have reached the maximum download limit.");
       }
     } catch (error) {
       console.log("Error downloading image", error);
+      if (!localStorage.getItem("token")) {
+        window.location.href = "/login"
+      } else {
+        if (error.response.status === 401){
+          window.location.href = "/login"
+        } else {
+          alert(error.response.data.message || "Error downloading image");
+        }
+      }
     }
   };
 
@@ -93,17 +105,17 @@ function Search() {
         </h1>
         {isError && <p className="text-red-500 mb-4">{error}</p>}
         <div className="flex mb-4 flex justify-center">
-            <input
-              type="search"
-              placeholder="Type something to search..."
-              className="border border-gray-300 rounded-md py-2 px-4 w-full "
-              onBlur={(event) => setHandleCat(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  setHandleCat(event.target.value);
-                }
-              }}
-            />
+          <input
+            type="search"
+            placeholder="Type something to search..."
+            className="border border-gray-300 rounded-md py-2 px-4 w-full "
+            onBlur={(event) => setHandleCat(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                setHandleCat(event.target.value);
+              }
+            }}
+          />
         </div>
 
         <div className="flex flex-wrap space-x-2 mb-4 flex justify-center">
@@ -141,11 +153,8 @@ function Search() {
                   />
                   <div className="absolute bottom-0 right-0 mb-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
-                      className={`bg-blue-500 text-white py-2 px-3 rounded hover:bg-blue-600 ${
-                        downloads >= MAX_DOWNLOADS && "cursor-not-allowed"
-                      }`}
-                      onClick={() => downloadImage(image.image)}
-                      disabled={downloads >= MAX_DOWNLOADS}
+                      className={`bg-blue-500 text-white py-2 px-3 rounded hover:bg-blue-600`}
+                      onClick={() => downloadImage(image.id)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -224,13 +233,9 @@ function Search() {
           </div>
 
           <button
-            disabled={downloads >= MAX_DOWNLOADS}
-            className={`mt-4 ${
-              downloads >= MAX_DOWNLOADS
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-500 text-white py-2 px-14 rounded hover:bg-blue-600"
-            } absolute top-14 right-14`}
-            onClick={() => downloadImage(selectedImage.image)}
+            className={`mt-4 "bg-blue-500 text-white py-2 px-14 rounded hover:bg-blue-600"
+             absolute top-14 right-14`}
+            onClick={() => downloadImage(selectedImage.id)}
           >
             Download
           </button>

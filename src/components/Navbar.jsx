@@ -15,7 +15,7 @@ import {
 import { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ad1 from "../assets/vrt2.svg";
-import api from "../axios/api";
+import axios from "axios";
 
 const products = [
   {
@@ -60,16 +60,20 @@ export default function Navbar() {
 
   const checklogin = async () => {
     try {
-      const response = await api.get("http://127.0.0.1:8000/api/profile/");
+      const response = await axios.get("http://127.0.0.1:8000/api/profile/", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       if (response?.data) {
         setProfileData(response.data);
       }
     } catch (error) {
       console.log(error?.response?.data?.message || "Something went wrong");
-      setProfileData()
+      setProfileData();
     }
   };
-  console.log(profileData)
+  console.log(profileData);
   useEffect(() => {
     checklogin();
   }, []);
@@ -78,13 +82,13 @@ export default function Navbar() {
     try {
       // Clear local storage
       localStorage.clear();
-      
+
       console.log("Logging out...");
-      
+
       // Clear profile data
       setProfileData();
-      
-      history.push("/home");  // Redirect to login page after logout
+
+      history.push("/login"); // Redirect to login page after logout
     } catch (error) {
       console.error("Logout error:", error); // Log any errors that occur during logout
       console.log(error?.response?.data?.message || "Something went wrong");
@@ -97,12 +101,14 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-       <div className="flex lg:flex-1">
-  <a href="#" className="-m-1.5 p-1.5">
-    <span className="sr-only">Your Company</span>
-    <span className="text-xl lg:text-2xl font-bold text-gray-900">Vortex</span>
-  </a>
-</div>
+        <div className="flex lg:flex-1">
+          <a href="/Home" className="-m-1.5 p-1.5">
+            <span className="sr-only">Your Company</span>
+            <span className="text-xl lg:text-2xl font-bold text-gray-900">
+              Vortex
+            </span>
+          </a>
+        </div>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -212,22 +218,21 @@ export default function Navbar() {
               className="text-sm font-semibold leading-6 text-gray-900"
             >
               Log in <span aria-hidden="true">&rarr;</span>
-           
             </a>
           </div>
         ) : (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/userprofile">
+              <div className="text-sm font-semibold leading-6 text-gray-900 mr-3">
+                {profileData.first_name}
+              </div>
+            </a>
             <a
               // href={`/UserProfile/${profileData.username}`}
               className="text-sm font-semibold leading-6 text-gray-900"
               onClick={handleLogout}
-
             >
-              {/* <span className="rounded-full bg-gray-200 px-2 py-1">{profileData.first_name ? profileData.first_name.charAt(0).toUpperCase() : 'U'}</span>
-    <span>{profileData.first_name ? profileData.first_name : 'User'} Log Out</span>
-    <span aria-hidden="true">&rarr;</span> */}
-
-               {profileData.first_name ? `${profileData.first_name} Log Out` : 'Log Out'} <span aria-hidden="true">&rarr;</span>
+              Log Out <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         )}
@@ -240,12 +245,14 @@ export default function Navbar() {
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div className="flex lg:flex-1">
-  <a href="#" className="-m-1.5 p-1.5">
-    <span className="sr-only">Your Company</span>
-    <span className="text-xl lg:text-2xl font-bold text-gray-900">Vortex</span>
-  </a>
-</div>
+          <div className="flex lg:flex-1">
+            <a href="/Home" className="-m-1.5 p-1.5">
+              <span className="sr-only">Your Company</span>
+              <span className="text-xl lg:text-2xl font-bold text-gray-900">
+                Vortex
+              </span>
+            </a>
+          </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
@@ -297,30 +304,32 @@ export default function Navbar() {
                 </Disclosure>
               </div>
               <div className="py-6">
-        {!profileData ? (
-          <a
-            href="/Login"
-            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-          >
-            Log in
-          </a>
-        ) : (
-          <div className="flex justify-between items-center">
-            <a
-              href="/Home"
-              className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-            >
-              {profileData.first_name ? `${profileData.first_name}` : 'User'}
-            </a>
-            <button
-              className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              onClick={handleLogout}
-            >
-              Log Out
-            </button>
-          </div>
-        )}
-      </div>
+                {!profileData ? (
+                  <a
+                    href="/Login"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Log in
+                  </a>
+                ) : (
+                  <div className="flex justify-between items-center">
+                    <a
+                      href="/userprofile"
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      {profileData.first_name
+                        ? `${profileData.first_name}`
+                        : "User"}
+                    </a>
+                    <button
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      onClick={handleLogout}
+                    >
+                      Log Out
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </Dialog.Panel>

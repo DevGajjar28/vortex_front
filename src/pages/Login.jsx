@@ -3,15 +3,11 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
-import api from "../axios/api";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Flip } from 'react-toastify';
-
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Flip } from "react-toastify";
 
 function Login() {
-
   const ToastSuccess = (msg) => {
     toast.success(msg, {
       position: "top-right",
@@ -25,7 +21,7 @@ function Login() {
       theme: "colored",
     });
   };
-  
+
   const ToastFailure = (msg) => {
     toast.error(msg, {
       position: "top-right",
@@ -39,7 +35,6 @@ function Login() {
       theme: "colored",
     });
   };
-  
 
   const history = useHistory();
   const handleLogin = async () => {
@@ -53,31 +48,38 @@ function Login() {
 
         localStorage.setItem("token", res?.data?.access);
         localStorage.setItem("refresh", res?.data?.refresh);
-        await checklogin();
-        history.push("/");
+        await checklogin()
       }
     } catch (error) {
       console.log(
         error?.response?.data?.data?.message || "Something went wrong"
       );
-      toast.error('Login failed. Please try again.');
+      toast.error("Login failed. Please try again.");
     }
   };
 
   const checklogin = async (refresh) => {
     try {
-      const response = await api.get("http://127.0.0.1:8000/api/profile/");
+      const response = await axios.get("http://127.0.0.1:8000/api/profile/", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       if (response?.data) {
         console.log(response.data);
-        localStorage.setItem("user", JSON.stringify(response.data))
-        refresh && history.push("/Home");
+        localStorage.setItem("user", JSON.stringify(response.data));
+        if (response.data.user_type === "free"){
+          history.push("/");
+        } else {
+          history.push("/Home");
+        }
+        // refresh && history.push("/Home");
       }
     } catch (error) {
       console.log(error?.response?.data?.message || "Something went wrong");
     }
   };
 
-  
   const schema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email address")
@@ -105,7 +107,7 @@ function Login() {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
