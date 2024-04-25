@@ -10,11 +10,9 @@ import {
   CursorArrowRaysIcon,
   FingerPrintIcon,
   SquaresPlusIcon,
-  XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import ad1 from "../assets/vrt2.svg";
 import axios from "axios";
 
 const products = [
@@ -57,6 +55,47 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileData, setProfileData] = useState();
   const history = useHistory();
+  const fileInputRef = useRef(null);
+
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
+  // Function to handle file selection
+  const handleFileSelect = async (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile && /\.(jpe?g|png)$/i.test(selectedFile.name)) {
+      try {
+        const formData = new FormData();
+        formData.append("image", selectedFile);
+        formData.append("category", 5);
+
+        const headers = {};
+
+        const token = localStorage.getItem("token");
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
+        }
+        const res = await axios.post(
+          `http://127.0.0.1:8000/api/fileupload/`,
+          formData,
+          {
+            headers: {
+              ...headers,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(res.data);
+      } catch (error) {
+        console.log(
+          error?.response?.data?.data?.message || "Something went wrong"
+        );
+      }
+    } else {
+      alert("Invalid file type. Please select a JPG, JPEG, or PNG file.");
+    }
+  };
 
   const checklogin = async () => {
     try {
@@ -211,29 +250,49 @@ export default function Navbar() {
             </Popover>
           </Popover.Group>
         </Popover.Group>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          accept="image/*"
+          onChange={handleFileSelect}
+        />
         {!profileData ? (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <button
+              onClick={handleClick}
+              className="bg-blue-500 text-white py-2 px-12 rounded hover:bg-blue-600 mr-3"
+            >
+              Submit Photo
+            </button>
             <a
               href="/login"
               className="text-sm font-semibold leading-6 text-gray-900"
             >
-              Log in <span aria-hidden="true">&rarr;</span>
+              <button className="bg-blue-500 text-white py-2 px-12 rounded hover:bg-blue-600">
+                Log in <span aria-hidden="true">&rarr;</span>
+              </button>
             </a>
           </div>
         ) : (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <button
+              onClick={handleClick}
+              className="bg-blue-500 text-white py-2 px-14 rounded hover:bg-blue-600 mr-3"
+            >
+              Submit Photo
+            </button>
             <a href="/userprofile">
               <div className="text-sm font-semibold leading-6 text-gray-900 mr-3">
                 {profileData.first_name}
               </div>
             </a>
-            <a
-              // href={`/UserProfile/${profileData.username}`}
+            <button
               className="text-sm font-semibold leading-6 text-gray-900"
               onClick={handleLogout}
             >
               Log Out <span aria-hidden="true">&rarr;</span>
-            </a>
+            </button>
           </div>
         )}
       </nav>

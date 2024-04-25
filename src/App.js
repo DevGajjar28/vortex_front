@@ -3,7 +3,6 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  useLocation,
 } from "react-router-dom";
 
 import "./App.css";
@@ -11,8 +10,6 @@ import Ads from "./components/Ads";
 import BackBtn from "./components/BackBtn";
 import CollectionDetail from "./components/CollectionDetail";
 import Navbar from "./components/Navbar";
-import PrivacyPolaicy from "./components/PrivacyPolicy";
-import UserProfile from "./components/UserProfile";
 import About from "./pages/About";
 import Advertise from "./pages/Advertise";
 import Collection from "./pages/Collection";
@@ -26,12 +23,10 @@ import Premium from "./pages/Premium";
 import Registration from "./pages/Registration";
 import "./setupTests";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import Profile from "./pages/Profile";
 
 export const ImageContext = createContext();
 
@@ -45,11 +40,6 @@ function App() {
         <div>{children}</div>
       </div>
     );
-  }
-
-  function CurrentPath() {
-    const location = useLocation();
-    return <div>Current Path: {location.pathname}</div>;
   }
 
   const queryClient = new QueryClient();
@@ -113,7 +103,7 @@ function App() {
             path="/Collection/:collectionId"
             component={CollectionDetail}
           />
-          <Route path="/UserProfile" render={() => <UserProfile />} />
+          <Route path="/UserProfile" render={() => <Profile />} />
           {/* <Route path="/PrivacyPolicy" component={PrivacyPolicy} /> */}
 
           {/* <Route path="/UserChange" render={() => <Layout><UserChange /></Layout>} /> */}

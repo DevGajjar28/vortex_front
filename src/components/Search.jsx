@@ -29,10 +29,13 @@ function Search() {
         }
       );
       console.log(res);
-      console.log(res?.data?.image.split("/"))
+      console.log(res?.data?.image.split("/"));
       if (res.data) {
         // Check if the user has reached the download limit
-        const response = await axios.get(`http://127.0.0.1:8000${res?.data?.image}`, { responseType: "blob" });
+        const response = await axios.get(
+          `http://127.0.0.1:8000${res?.data?.image}`,
+          { responseType: "blob" }
+        );
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
@@ -45,10 +48,10 @@ function Search() {
     } catch (error) {
       console.log("Error downloading image", error);
       if (!localStorage.getItem("token")) {
-        window.location.href = "/login"
+        window.location.href = "/login";
       } else {
-        if (error.response.status === 401){
-          window.location.href = "/login"
+        if (error.response.status === 401) {
+          window.location.href = "/login";
         } else {
           alert(error.response.data.message || "Error downloading image");
         }
