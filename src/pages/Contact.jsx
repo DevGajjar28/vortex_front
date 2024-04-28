@@ -1,16 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import { useFormik } from 'formik';
 import "yup-phone";
+import axios from "axios";
+import { Flip } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+export const ToastSuccess = (msg) => {
+  toast.success(msg, {
+    position: "top-right",
+    autoClose: 3000,
+    transition: Flip,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+};
+
+export const ToastFailure = (msg) => {
+  toast.error(msg, {
+    position: "top-right",
+    autoClose: 2000,
+    transition: Flip,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+};
 
 function Contact() {
-  
-  const handleContact = async() => {
-    console.log(formik.values)
+
+  const handleContact = async () => {
+    try {
+      const res = await axios.post(
+        `http://127.0.0.1:8000/api/contact/`,
+        formik.values
+      );
+
+      if (res.data) {
+        ToastSuccess("Form submitted successfully!");
+        formik.resetForm();
+      }
+    } catch (error) {
+      ToastFailure(
+        error?.response?.data?.data?.message || "Something went wrong"
+      );
+    }
   }
 
   const schema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
+    first_name: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
     phone: Yup.string()
       .matches(/^\d{10}$/, "Phone number must be 10 digits")
@@ -20,17 +66,17 @@ function Contact() {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email:'',
-      phone:'',
-      message:'',
+      first_name: '',
+      email: '',
+      phone: '',
+      message: '',
     },
     onSubmit: handleContact,
-    validationSchema:schema
+    validationSchema: schema
   });
 
 
- 
+
 
   return (
     <section className="bg-gray-100">
@@ -66,12 +112,12 @@ function Contact() {
                   className="w-full rounded-lg border-gray-200 p-3 text-sm"
                   placeholder="Name"
                   type="text"
-                  id="name"
-                  name="name"
+                  id="first_name"
+                  name="first_name"
                   onChange={formik.handleChange}
-                  value={formik.values.name}
+                  value={formik.values.first_name}
                 />
-                {formik.errors.name && <p className="text-red-500 text-sm">{formik.errors.name}</p>}
+                {formik.errors.first_name && <p className="text-red-500 text-sm">{formik.errors.first_name}</p>}
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

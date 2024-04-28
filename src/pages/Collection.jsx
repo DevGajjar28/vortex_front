@@ -13,6 +13,7 @@ const Collection = () => {
       try {
         const response = await fetch(`https://api.unsplash.com/collections?page=${page}&per_page=12&client_id=zF8Ku92rcNtoldkP2sKie1-Vs8h9B6OK9LIqTKoDrdM`);
         const data = await response.json();
+        console.log(data)
         setCollections(prevCollections => [...prevCollections, ...data]);
         setPage(prevPage => prevPage + 1);
         setLoading(false);
