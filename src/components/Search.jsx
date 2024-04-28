@@ -63,7 +63,7 @@ function Search() {
     try {
       const res = await axios.get(`http://127.0.0.1:8000/api/category/`);
       if (res.data) {
-        setCategory(res?.data?.map((data) => data.category_name));
+        setCategory(res?.data?.results?.map((data) => data.category_name));
       }
     } catch (error) {
       console.log(
