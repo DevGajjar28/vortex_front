@@ -50,7 +50,7 @@ function Footer() {
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="/Premium"
@@ -58,7 +58,7 @@ function Footer() {
                 {" "}
                 Services{" "}
               </a>
-            </li>
+            </li> */}
 
             <li>
               <a

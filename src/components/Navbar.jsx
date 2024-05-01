@@ -43,7 +43,7 @@ const products = [
   // { name: 'Need Help', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
 ];
 const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
+  // { name: "Watch demo", href: "#", icon: PlayCircleIcon },
   { name: "Contact US", href: "/Contact", icon: PhoneIcon },
 ];
 
@@ -258,7 +258,7 @@ export default function Navbar() {
           onChange={handleFileSelect}
         />
         {!profileData ? (
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
             <button
               onClick={handleClick}
               className="bg-blue-500 text-white py-2 px-12 rounded hover:bg-blue-600 mr-3"
@@ -346,7 +346,7 @@ export default function Navbar() {
                           aria-hidden="true"
                         />
                       </Disclosure.Button>
-                      <Disclosure.Panel className="mt-2 space-y-2">
+                      <Disclosure.Panel className="mt-2 space-y-2 ">
                         {[...products, ...callsToAction].map((item) => (
                           <Disclosure.Button
                             key={item.name}

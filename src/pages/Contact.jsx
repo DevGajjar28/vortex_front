@@ -93,11 +93,11 @@ function Contact() {
             <div className="mt-8">
               <a href="#" className="text-2xl font-bold text-pink-600">
                 {" "}
-                0151 475 4450{" "}
+                9265015709{" "}
               </a>
 
               <address className="mt-2 not-italic">
-                282 Kevin Brook, Imogeneborough, CA 58517
+              A8, Vaikunth Complex, Ghodasar, Ahmedabad.
               </address>
             </div>
           </div>

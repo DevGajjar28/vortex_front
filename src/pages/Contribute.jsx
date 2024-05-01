@@ -57,7 +57,7 @@ function Contribute() {
       </div>
 
       {/* second sextion */}
-      <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
+      {/* <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
         Don’t leave your images sitting on your hard drive.
       </h1>
       <div className="max-w-3xl mx-auto px-4 py-8 border border-gray-300 rounded-lg mt-16">
@@ -147,7 +147,7 @@ function Contribute() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* third section */}
 
